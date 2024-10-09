@@ -11,7 +11,10 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-      },
+      },     
+       backgroundImage: {
+        gradiente: "conic-gradient(at 70% -10%, white, black,#101010,#303030, #303030,#101010, black, white)"
+      }
     },
   },
   plugins: [],

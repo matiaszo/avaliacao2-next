@@ -30,7 +30,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col justify-center items-center`}
       >
         <Menu/>
-        <main className="flex items-center justify-center">
+        <main className="flex items-center justify-center bg-neutral-800">
         {children}
         </main>
       </body>

@@ -69,7 +69,6 @@ const axiosPage: React.FC = () => {
             <div className="flex flex-col items-center justify-center mt-1 gap-1">
                 <div className="flex">
                     <input type="text" value={name} placeholder="digite o nome" onChange={(event)=>{setName(event.target.value)}}/>
-                    {/* <input type="text" value={race} placeholder="Digite a raça" onChange={(event)=>{setRace(event.target.value)}}/> */}
                  </div>
                     {erro && <h5 className="text-white">{message}</h5>} 
                 <Suspense fallback={<div>Carregando dados...</div>}>
