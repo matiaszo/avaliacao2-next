@@ -1,5 +1,5 @@
 export enum ROUTES{
     home = "/",
-    axios = "pagina-axios",
-    server = "pagina-server-side"
+    axios = "/pagina-axios",
+    server = "/pagina-server-side"
 }
