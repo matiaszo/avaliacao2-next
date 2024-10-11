@@ -14,8 +14,6 @@ export const Menu = () => {
                 <Link className={style.options} href={ROUTES.home}>Fetch</Link>
                 <Link className={style.options} href={ROUTES.axios}>Axios</Link>
                 <Link className={style.options} href={ROUTES.server}>Server side</Link>
-
-
             </h1>
         </>
     )

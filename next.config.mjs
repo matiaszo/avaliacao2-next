@@ -13,11 +13,11 @@ const nextConfig = {
                 destination: "/home",
             },
             {
-                source: "/pagina-axios",
+                source: "/segunda-rota",
                 destination: "/axios-page",
             },
             {
-                source: "/pagina-server-side",
+                source: "/terceira-rota",   
                 destination: "/server-side",
             }
 

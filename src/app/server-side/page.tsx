@@ -25,7 +25,7 @@ const serverPage: React.FC = async () => {
                 {data.items.map((item, index) => {
                     return(
                         <div key={index} className="w-[200px]">
-                            <div className="bg-gradient-to-r font-semibold justify-center from-blue-500 to-blue-600 w-full p-[5px] text-center rounded-[30px] flex flex-col gap-[10px] divide-y">
+                            <div className=" font-semibold justify-center bg-gradient-to-r from-blue-500 to-blue-600 w-full p-[5px] text-center rounded-[30px] flex flex-col gap-[10px] divide-y">
                                 <p className="font-bold font-bg">{item.name}</p>
                                 <p>{item.affiliation}</p>
                                 <p>{item.ki}</p>

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Suspense } from "react";
+import Card from "@/components/card"
 
 import bgImg from "@/images/bg-img.png" 
 
@@ -32,30 +33,13 @@ export default function Home() {
 
   return (
     <>
-  <div className="flex flex-wrap justify-center items-center mt-10 gap-10 max-w-[85%]">
-    <Suspense fallback={<div>Carregando dados...</div>}>
-        {characters.map((item,index)=>{
-          return(
-            <div className="flex flex-col min-w-80 max-w-80 justify-center items-center border-2 rounded-md" key={index}>
-                    <div className="flex h-96 w-full relative items-center justify-center">
-                      <Image src={bgImg} alt="imagem do personagem" className="absolute h-full w-full" width={200} height={200} priority/>
-                      <Image src={item.image} alt="imagem do personagem" className="w-auto h-[110%] object-scale-down ease-in-out duration-500 hover:scale-125 z-10" width={200} height={200} priority/>
-                    </div>
-                    <div className="flex flex-col w-full bg-zinc-700 text-white text-xl">
-                        <p className="flex ml-3 mt-3 font-extrabold">{item.name}</p>
-                        <p className="flex ml-3 text-yellow-500 font-bold">{item.race}</p>
-                        <p className="flex ml-3 text-3xl font-semibold">Affiliation</p>
-                        <p className="flex ml-3 text-yellow-500 font-bold">{item.affiliation}</p>
-                        <p className="flex ml-3 text-3xl font-semibold">Base Ki</p>
-                        <p className="flex ml-3 text-yellow-500 font-bold">{item.ki}</p>
-                        <p className="flex ml-3 text-3xl font-semibold">Raça</p>
-                        <p className="flex ml-3 text-yellow-500 font-bold">{item.race}</p>
-                    </div>
-            </div>
-          )
-        })}
+    <Suspense fallback="Loading...">
+      <div className="flex flex-wrap justify-center items-center mt-10 gap-10 max-w-[85%]">
+          {characters.map((item, index)=>(
+            <Card key={index} bgImg={bgImg} image={item.image} name={item.name} affiliation={item.affiliation} ki={item.ki} race={item.race}/>
+          ))}
+        </div>
       </Suspense>
-      </div>
     </>
   );
 }
