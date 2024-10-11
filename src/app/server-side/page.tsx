@@ -20,8 +20,8 @@ const serverPage: React.FC = async () => {
 
     return(
         <>
-            <Suspense fallback={<div>Loading...</div>}>
             <div className="flex flex-col">
+            <Suspense fallback={<div>Loading...</div>}>
                 {data.items.map((item, index) => {
                     return(
                         <div key={index} className="w-[200px]">
@@ -31,13 +31,13 @@ const serverPage: React.FC = async () => {
                                 <p>{item.ki}</p>
                                 <p>{item.name}</p>
                                 <p>{item.race}</p>
-                                <Link href={`/perso/${item.name}`}>ABRIR</Link>
+                                <Link href={`/perso/${item.id}`}>ABRIR</Link>
                             </div>
                         </div>
                     )
                 })}
-            </div>
             </Suspense>
+            </div>
         </>
     )
 }

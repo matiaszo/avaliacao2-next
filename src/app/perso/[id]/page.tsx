@@ -2,7 +2,7 @@ import Image from "next/image";
 
 interface IPerso {
     params: {
-        name: string
+        id: string
     }
 }
 
@@ -19,8 +19,8 @@ interface IDataSI {
     items: IData[]
 }
 
-const Perso = async ({params: {name}}: IPerso) => {
-    const res = await fetch(`https://dragonball-api.com/api/characters/?name=${name}`)
+const Perso = async ({params: {id}}: IPerso) => {
+    const res = await fetch(`https://dragonball-api.com/api/characters/${id}`)
     const data: IData = await res.json()
 
     console.log("Response")
@@ -45,7 +45,7 @@ export async function GenerateStaticParams(){
     const res = await fetch('https://dragonball-api.com/api/characters/')
     const data : IDataSI = await res.json()
 
-    return data.items.map(item => item.name)
+    return data.items.map(item => item.id)
 }
 
 export default Perso;
