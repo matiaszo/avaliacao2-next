@@ -2,17 +2,16 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Menu } from "@/components/menu";
+import { Roboto } from "next/font/google"
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+
+const roboto = Roboto({
+  weight: ["100", "400", "900"],
+  style:"italic",
+  variable: "--roboto",
+  subsets: ["latin"]
+})
+
 
 export const metadata: Metadata = {
   title: "Api dragon ball",
@@ -27,9 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex bg-neutral-800 flex-col justify-center items-center`}
+        className={`${roboto.variable} antialiased flex bg-neutral-800 flex-col justify-center items-center`}
       >
-        <Menu/>
+        <Menu firstRoute="Primeira rota" secondROute="Segunda Rota" thirdRoute="Terceira rota"/>
         <main className="flex min-w-full min-h-full items-center justify-center ">
         {children}
         </main>

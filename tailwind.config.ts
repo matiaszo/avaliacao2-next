@@ -11,6 +11,14 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+      },
+      fontSize:{
+        large: "40px",
+        medium: "24px",
+        small: "16px"
+      },
+      fontFamily:{
+        robFont: "var(--roboto)"
       },     
        backgroundImage: {
         gradiente: "conic-gradient(at 70% -10%, white, black,#101010,#303030, #303030,#101010, black, white)"
