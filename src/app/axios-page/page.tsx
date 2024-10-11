@@ -2,6 +2,7 @@
 
 import { useEffect, useState, Suspense } from "react";
 import Image from "next/image";
+import bgImg from "@/images/bg-img.png"
 
 import { api } from "@/constants/api";
 
@@ -28,22 +29,16 @@ const axiosPage: React.FC = () => {
         api.get(`/characters/?name=${name}`).then((res) => {
             const data = res.data
 
-            if(name === "" && race === ""){
+            setErro(false)
+            if(name === ""){
                 setCharacter(data.items)
-                console.log("pri")
-            }else if(race === "" && name.length > 0){
+            }else if(name.length > 0){
                 setCharacter(data)
-                console.log("seg")
-            }else if (name === "" && race.length > 0){
+            }else{
                 setCharacter(data)
-                console.log("ter")
-            }
-            else{
-                setCharacter(data)
-                console.log("else")
             }
 
-            setErro(false)
+
         }).catch((error) => {
             if(error.response.status === 200){
                 setMessage("Personagem nao encontrado")
@@ -66,30 +61,35 @@ const axiosPage: React.FC = () => {
 
     return(
         <>
-            <div className="flex flex-col items-center justify-center mt-1 gap-1">
-                <div className="flex">
-                    <input type="text" value={name} placeholder="digite o nome" onChange={(event)=>{setName(event.target.value)}}/>
-                 </div>
-                    {erro && <h5 className="text-white">{message}</h5>} 
-                <Suspense fallback={<div>Carregando dados...</div>}>
-                    <div className="flex flex-wrap justify-center">
-                            {character.map((item, index) => {
-                                return(
-                                    <div key={index} className="flex flex-col justify-center items-center text-center border-2">
-                                        <div>
-                                            <p>{item.name}</p>
-                                            <p>{item.affiliation}</p>
-                                            <Image src={item.image} alt="imagem do personagem" className="min-h-80 min-w-80 max-h-80 max-w-80 object-scale-down" width={200} height={200} priority/>
-                                            <p>{item.ki}</p>
-                                            <p>{item.race}</p>
-                                        </div>
-                                    </div>
-                                )
-                            })}
-                    </div>
-                </Suspense>
+         <div className="flex flex-col min-w-full justify-center items-center">
+             <input type="text" className="w-50 mt-10 h-10 rounded-md text-xl text-center" value={name} placeholder="Nome do personagem" onChange={(event)=>{setName(event.target.value)}}/>
+             {erro && <h5 className="text-white">{message}</h5>} 
+        <div className="flex flex-row flex-wrap justify-center items-center mt-10 gap-10 max-w-[85%]">
+          <Suspense fallback={<div>Carregando dados...</div>}>
+              {character.map((item,index)=>{
+                return(
+                  <div className="flex flex-col min-w-80 max-w-80 justify-center items-center border-2 rounded-md" key={index}>
+                          <div className="flex h-96 w-full relative items-center justify-center">
+                            <Image src={bgImg} alt="imagem do personagem" className="absolute h-full w-full" width={200} height={200} priority/>
+                            <Image src={item.image} alt="imagem do personagem" className="w-auto h-[110%] object-scale-down ease-in-out duration-500 hover:scale-125 z-10" width={200} height={200} priority/>
+                          </div>
+                          <div className="flex flex-col w-full bg-zinc-700 text-white text-xl">
+                              <p className="flex ml-3 mt-3 font-extrabold">{item.name}</p>
+                              <p className="flex ml-3 text-yellow-500 font-bold">{item.race}</p>
+                              <p className="flex ml-3 text-3xl font-semibold">Affiliation</p>
+                              <p className="flex ml-3 text-yellow-500 font-bold">{item.affiliation}</p>
+                              <p className="flex ml-3 text-3xl font-semibold">Base Ki</p>
+                              <p className="flex ml-3 text-yellow-500 font-bold">{item.ki}</p>
+                              <p className="flex ml-3 text-3xl font-semibold">Raça</p>
+                              <p className="flex ml-3 text-yellow-500 font-bold">{item.race}</p>
+                          </div>
+                  </div>
+                )
+              })}
+            </Suspense>
             </div>
-        </>
+            </div>
+          </>
     )
 }
 

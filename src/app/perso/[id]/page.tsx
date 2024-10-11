@@ -29,13 +29,13 @@ const Perso = async ({params: {id}}: IPerso) => {
     console.log(data)
 
     return(
-        <div>
-            <p>something</p>
-                    <p>{data.id}</p>
-                    <p>{data.affiliation}</p>
-                    <Image src={data.image} alt="imagem do personagem" className="min-h-80 min-w-80 max-h-80 max-w-80 object-scale-down" width={200} height={200} priority/>
+        <div className="flex flex-col text-xl font-bold justify-center mt-44 sm:w-[30%] md:w-[80%] bg:w-[60%] lg:w-[55%] rounded-md items-center bg-gradient-to-br from-orange-500 to-red-600">
+                    <p className="font-extrabold text-5xl">{data.name}</p>
+                    <hr className="w-full mt-2"/>
+                    <Image src={data.image} alt="imagem do personagem" className=" ease-in-out duration-500 hover:scale-110 object-scale-down" width={300} height={300} priority/>
                     <p>{data.ki}</p>
                     <p>{data.race}</p>
+                    <p>{data.affiliation}</p>
         </div>
     )
 }

@@ -20,18 +20,19 @@ const serverPage: React.FC = async () => {
 
     return(
         <>
-            <div className="flex flex-col">
+            <div className="flex w-[80%] p-10 gap-16 flex-wrap justify-center items-center">
             <Suspense fallback={<div>Loading...</div>}>
                 {data.items.map((item, index) => {
                     return(
                         <div key={index} className="w-[200px]">
-
-                            <div className="bg-white w-full p-[5px] text-center rounded-t-[30px] flex flex-col gap-[10px]">
+                            <div className="bg-gradient-to-r font-semibold justify-center from-blue-500 to-blue-600 w-full p-[5px] text-center rounded-[30px] flex flex-col gap-[10px] divide-y">
+                                <p className="font-bold font-bg">{item.name}</p>
                                 <p>{item.affiliation}</p>
                                 <p>{item.ki}</p>
-                                <p>{item.name}</p>
                                 <p>{item.race}</p>
-                                <Link href={`/perso/${item.id}`}>ABRIR</Link>
+                                <div className="flex w-full justify-center items-center">
+                                    <Link className="bg-green-500 w-[40%] mt-2 rounded-md" href={`/perso/${item.id}`}>ABRIR</Link>
+                                </div>
                             </div>
                         </div>
                     )
